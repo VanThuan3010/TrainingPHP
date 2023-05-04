@@ -79,8 +79,40 @@ class database
         return mysqli_query($this->mysqli, $sql);
     }
 
+    public function pagination($table, $rows = "*", $where = null, $start = 0, $num = 2)
+    {
+        $sql = "SELECT $rows FROM $table WHERE $where LIMIT $start, $num";
+        $this->sql = $result = $this->mysqli->query($sql);
+    }
+    public function pagination2($table, $rows = "*", $where = null, $start = 0, $num = 2)
+    {
+        $sql = "SELECT $rows FROM $table WHERE $where LIMIT $start, $num";
+        return mysqli_query($this->mysqli, $sql);
+    }
+
     public function __destruct()
     {
         $this->mysqli->close();
     }
 }
+// class sorts extends database
+// {
+//     public $que;
+//     private $servername = 'localhost';
+//     private $username = 'root';
+//     private $password = '';
+//     private $dbname = 'qlns';
+//     private $result = array();
+//     private $mysqli = '';
+
+//     public function __construct()
+//     {
+//         $this->mysqli = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+//     }
+//     protected function sort($table, $rows, $col, $type)
+//     {
+//         $sql = "SELECT $rows FROM $table ORDER BY $col $type";
+//         $this->sql = $result = $this->mysqli->query($sql);
+//     }
+// }
+?>

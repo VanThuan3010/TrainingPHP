@@ -14,7 +14,9 @@ if ($result->num_rows > 0) {
             <td>
                 <a href="viewEmployee.php?id=<?= $row["ID"] ?>"><button type="button" class="btn btn-primary">View</button></a>
                 <a href="editEmployee.php?id=<?= $row["ID"] ?>"><button type="button" class="btn btn-success">Edit</button></a>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <form action="delete.php" method="post" class="d-inline">
+                    <button type="submit" name="del" value="<?= $row["ID"] ?>" class="btn btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
 <?php

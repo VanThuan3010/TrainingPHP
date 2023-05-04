@@ -22,26 +22,14 @@ include_once('layout.php')
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#manager">Manager</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#statistical">Statistical</a>
+            </li>
         </ul>
 
         <div class="tab-content">
             <div id="dev" class="container tab-pane active"><br>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Date of Birth</th>
-                            <th>Address</th>
-                            <th>Experience (By Year)</th>
-                            <th>Salary This Month</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include('listDev.php') ?>
-                    </tbody>
-                </table>
+                <?php include('listDev.php') ?>
             </div>
             <div id="manager" class="container tab-pane fade"><br>
                 <table class="table table-striped">
@@ -57,9 +45,12 @@ include_once('layout.php')
                     </thead>
                     <tbody>
                         <?php
-                        include ('listMan.php') ?>
+                        include('listMan.php') ?>
                     </tbody>
                 </table>
+            </div>
+            <div id="statistical" class="container tab-pane fade"><br>
+                <?php include('statistical.php') ?>
             </div>
         </div>
     </div>
