@@ -1,5 +1,21 @@
 <?php 
     include_once 'database.php';
+    class updateEm extends database{
+        public function update($table, $para = array(), $id)
+        {
+            $args = array();
+
+            foreach ($para as $key => $value) {
+                $args[] = "$key = '$value'";
+            }
+
+            $sql = "UPDATE  $table SET " . implode(',', $args);
+
+            $sql .= " WHERE $id";
+
+            $result = $this->mysqli->query($sql);
+        }
+    }
     if (isset($_POST['update'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -23,7 +39,7 @@
         }
 
 
-        $a = new database();
+        $a = new updateEm();
         $a->update('employee',['ID'=>$id,'Name'=>$name,'Age'=>$age,'Address'=>$address,'DateOfBirth'=>$dob,'Experience'=>$exp,'BaseSalary'=>$baseSalary], "id='$id'");
         $a->update('work',['ID'=>$id,'hours'=>$hours,'month'=>$month,'years'=>$year], "id='$id'");
         if($typeOfEm == 'Developer'){

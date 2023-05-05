@@ -9,6 +9,14 @@ include_once('layout.php')
         <h2>Human Resource Management</h2>
         <br>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddEmployee">Add</button>
+        <br /><br />
+        <form action="statisOper.php" method="get">
+            <div class="d-flex gap-3">
+                <input type="text" name="min" value="">
+                <input type="text" name="max" value="">
+                <button name="filter" class="btn btn-primary">Filter</button>
+            </div>
+        </form>
 
         <br><br>
         <?php

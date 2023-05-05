@@ -40,4 +40,4 @@
 
     </tbody>
 </table>
-<?php include_once 'show_page.php'; ?>
+<!-- <?php include_once 'show_page.php'; ?> -->

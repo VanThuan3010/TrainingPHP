@@ -2,12 +2,12 @@
 class database
 {
     public $que;
-    private $servername = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $dbname = 'qlns';
-    private $result = array();
-    private $mysqli = '';
+    protected $servername = 'localhost';
+    protected $username = 'root';
+    protected $password = '';
+    protected $dbname = 'qlns';
+    protected $result = array();
+    protected $mysqli = '';
 
     public function __construct()
     {
@@ -22,38 +22,20 @@ class database
         return mysqli_query($this->mysqli, $sql);
     }
 
-    public function insert($table, $para = array())
-    {
-        $table_columns = implode(',', array_keys($para));
-        $table_value = implode("','", $para);
+    // public function update($table, $para = array(), $id)
+    // {
+    //     $args = array();
 
-        $sql = "INSERT INTO $table($table_columns) VALUES('$table_value')";
+    //     foreach ($para as $key => $value) {
+    //         $args[] = "$key = '$value'";
+    //     }
 
-        $result = $this->mysqli->query($sql);
-    }
+    //     $sql = "UPDATE  $table SET " . implode(',', $args);
 
-    public function update($table, $para = array(), $id)
-    {
-        $args = array();
+    //     $sql .= " WHERE $id";
 
-        foreach ($para as $key => $value) {
-            $args[] = "$key = '$value'";
-        }
-
-        $sql = "UPDATE  $table SET " . implode(',', $args);
-
-        $sql .= " WHERE $id";
-
-        $result = $this->mysqli->query($sql);
-    }
-
-    public function delete($table, $id)
-    {
-        $sql = "DELETE FROM $table";
-        $sql .= " WHERE $id ";
-        $sql;
-        $result = $this->mysqli->query($sql);
-    }
+    //     $result = $this->mysqli->query($sql);
+    // }
 
     public $sql;
 
@@ -115,4 +97,3 @@ class database
 //         $this->sql = $result = $this->mysqli->query($sql);
 //     }
 // }
-?>

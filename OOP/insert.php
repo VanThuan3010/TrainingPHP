@@ -1,5 +1,16 @@
 <?php 
     include_once 'database.php';
+    class insertEm extends database{
+        public function insert($table, $para = array())
+        {
+            $table_columns = implode(',', array_keys($para));
+            $table_value = implode("','", $para);
+
+            $sql = "INSERT INTO $table($table_columns) VALUES('$table_value')";
+
+            $result = $this->mysqli->query($sql);
+        }
+    }
     if (isset($_POST['sbm'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -23,7 +34,7 @@
         }
 
 
-        $a = new database();
+        $a = new insertEm();
         if (mysqli_num_rows($a->checkid('employee', $id)) == 0) {
             $a->insert('employee',['ID'=>$id,'Name'=>$name,'Age'=>$age,'Address'=>$address,'DateOfBirth'=>$dob,'Experience'=>$exp,'BaseSalary'=>$baseSalary]);
             $a->insert('work',['ID'=>$id,'hours'=>$hours,'month'=>$month,'years'=>$year]);
