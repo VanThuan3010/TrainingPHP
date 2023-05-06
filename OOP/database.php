@@ -21,21 +21,35 @@ class database
 
         return mysqli_query($this->mysqli, $sql);
     }
+    public function insert($table, $para = array())
+    {
+        $table_columns = implode(',', array_keys($para));
+        $table_value = implode("','", $para);
 
-    // public function update($table, $para = array(), $id)
-    // {
-    //     $args = array();
+        $sql = "INSERT INTO $table($table_columns) VALUES('$table_value')";
 
-    //     foreach ($para as $key => $value) {
-    //         $args[] = "$key = '$value'";
-    //     }
+        $result = $this->mysqli->query($sql);
+    }
 
-    //     $sql = "UPDATE  $table SET " . implode(',', $args);
+    public function update($table, $para = array(), $id)
+    {
+        $args = array();
 
-    //     $sql .= " WHERE $id";
+        foreach ($para as $key => $value) {
+            $args[] = "$key = '$value'";
+        }
 
-    //     $result = $this->mysqli->query($sql);
-    // }
+        $sql = "UPDATE  $table SET " . implode(',', $args);
+
+        $sql .= " WHERE $id";
+
+        $result = $this->mysqli->query($sql);
+    }
+    public function delete($table, $id)
+    {
+        $sql = "DELETE FROM $table WHERE $id";
+        $result = $this->mysqli->query($sql);
+    } 
 
     public $sql;
 
@@ -77,23 +91,3 @@ class database
         $this->mysqli->close();
     }
 }
-// class sorts extends database
-// {
-//     public $que;
-//     private $servername = 'localhost';
-//     private $username = 'root';
-//     private $password = '';
-//     private $dbname = 'qlns';
-//     private $result = array();
-//     private $mysqli = '';
-
-//     public function __construct()
-//     {
-//         $this->mysqli = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
-//     }
-//     protected function sort($table, $rows, $col, $type)
-//     {
-//         $sql = "SELECT $rows FROM $table ORDER BY $col $type";
-//         $this->sql = $result = $this->mysqli->query($sql);
-//     }
-// }
