@@ -1,7 +1,4 @@
 <?php 
-	/**
-	* 
-	*/
 	class controller_choose_statis extends controller
 	{
 		

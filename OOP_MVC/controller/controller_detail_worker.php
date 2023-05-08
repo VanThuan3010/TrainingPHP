@@ -12,6 +12,9 @@ class controller_detail_worker extends controller
 		parent::__construct();
 		$id_worker = $_GET["id_worker"];
 		$workers = $this->model->fetch_one("select * from worker where id_worker= $id_worker");
+
+		
+
 		if ($workers->id_type_worker == 1) {
 			$worker = new Developer();
 			$type_worker = $this->model->fetch_one("select * from type_worker where id_type_worker = $workers->id_type_worker");

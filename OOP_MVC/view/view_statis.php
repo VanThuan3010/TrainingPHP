@@ -22,3 +22,22 @@
 	}
 	?>
 </table>
+<ul class="pagination">
+	<!-- <li class="page-item">
+		<a class="page-link" href="index.php?controller=statis&month=<?php echo $month; ?>&year=<?php echo $year; ?>&sort=<?php echo $sort; ?>" aria-label="Previous">
+			<span aria-hidden="true">&laquo;</span>
+		</a>
+	</li> -->
+	<?php
+	for ($i = 1; $i <= $number_page; $i++) {
+	?>
+		<li class="page-item"><a class="page-link" href="index.php?controller=statis&month=<?php echo $month; ?>&year=<?php echo $year; ?>&sort=<?php echo $sort; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+	<?php
+	}
+	?>
+	<!-- <li class="page-item">
+		<a class="page-link" href="index.php?controller=statis&month=<?php echo $month; ?>&year=<?php echo $year; ?>&sort=<?php echo $sort; ?>&page=<?php echo $number_page; ?>" aria-label="Next">
+			<span aria-hidden="true">&raquo;</span>
+		</a>
+	</li> -->
+</ul>
