@@ -14,12 +14,12 @@
 	?>
 		<tr>
 			<td><?php echo $stt; ?></td>
-			<td><?php echo $work->hour ?></td>
-			<td><?php echo $work->month ?></td>
-			<td><?php echo $work->year ?></td>
+			<td><?php echo $work->getHour() ?></td>
+			<td><?php echo $work->getMonth() ?></td>
+			<td><?php echo $work->getYear() ?></td>
 			<td>
-				<a type="button" class="btn btn-success" href="index.php?controller=add_hour_do&act=edit&id_worker=<?php echo $id_worker ?>&month=<?php echo $work->month ?>&year=<?php echo $work->year ?>&hour=<?php echo $work->hour ?>">Sửa</a>
-				<a type="button" class="btn btn-danger" href="index.php?controller=add_hour_do&act=delete&id_worker=<?php echo $id_worker ?>&month=<?php echo $work->month ?>&year=<?php echo $work->year ?>">Xóa</a>
+				<a type="button" class="btn btn-success" href="index.php?controller=add_hour_do&act=edit&id_worker=<?php echo $id_worker ?>&month=<?php echo $work->getMonth() ?>&year=<?php echo $work->getYear() ?>&hour=<?php echo $work->getHour() ?>">Sửa</a>
+				<a type="button" class="btn btn-danger" href="index.php?controller=add_hour_do&act=delete&id_worker=<?php echo $id_worker ?>&month=<?php echo $work->getMonth() ?>&year=<?php echo $work->getYear() ?>">Xóa</a>
 			</td>
 		</tr>
 	<?php

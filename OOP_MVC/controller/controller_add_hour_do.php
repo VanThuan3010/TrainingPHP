@@ -21,12 +21,12 @@ class controller_add_hour_do extends controller
 						$year = $_POST["year"];
 						$total_record = $this->model->count("select hour from work where month=$month and year=$year");
 						if ($total_record == 0) {
-							$this->model->execute("insert into work(id_worker,hour,month, year) values($id_worker,$hour,'$date')");
+							$this->model->execute("insert into work(id_worker,hour,month, year) values($id_worker,$hour,$month,$year)");
 						} else $this->model->execute("update work set hour= $hour where id_worker = $id_worker and month = $month and year = $year");
-						}
-						header("location:index.php?controller=worker");
-						break;
 					}
+					header("location:index.php?controller=worker");
+					break;
+				}
 			case 'edit': {
 					$id_worker = isset($_GET["id_worker"]) ? $_GET["id_worker"] : 0;
 					$worker = $this->model->fetch_one("select * from worker where id_worker=$id_worker");
@@ -47,7 +47,7 @@ class controller_add_hour_do extends controller
 					}
 					header("location:index.php?controller=detail_statis&id_worker=$id_worker");
 					break;
-					}
+				}
 			case 'delete': {
 					$id_worker = $_GET["id_worker"];
 					$month = $_GET["month"];
@@ -56,8 +56,8 @@ class controller_add_hour_do extends controller
 					header("location:index.php?controller=detail_statis&id_worker=$id_worker");
 					// header("location:index.php?controller=worker");
 					break;
-					}
 				}
-			}
 		}
+	}
+}
 new controller_add_hour_do();

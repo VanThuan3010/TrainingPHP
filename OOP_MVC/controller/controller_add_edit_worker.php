@@ -105,8 +105,6 @@ class controller_add_edit_worker extends controller
 						$number_year_exp = $_POST["number_year_exp"];
 						$type_worker = $_POST["type_worker"];
 						$base_salary = $_POST["base_salary"];
-						$type_worker = $workers->id_type_worker;
-						echo $type_worker;
 
 						if ($type_worker == 1) {
 							if ($number_year_exp <= 2) {
