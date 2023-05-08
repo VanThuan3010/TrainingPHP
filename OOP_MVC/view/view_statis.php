@@ -31,7 +31,7 @@
 	<?php
 	for ($i = 1; $i <= $number_page; $i++) {
 	?>
-		<li class="page-item"><a class="page-link" href="index.php?controller=statis&month=<?php echo $month; ?>&year=<?php echo $year; ?>&sort=<?php echo $sort; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+		<li class="page-item"><a class="page-link" href="index.php?controller=statis&month=<?php echo $month; ?>&year=<?php echo $year; ?>&sort=<?php echo $sort; ?>&page=<?php echo $i; ?>&min=<?php echo $min; ?>&max=<?php echo $max; ?>"><?php echo $i; ?></a></li>
 	<?php
 	}
 	?>

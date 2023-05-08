@@ -8,7 +8,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3">Ngày sinh</div>
-				<div class="col-md-9"><input type="text" placeholder="YYYY-MM-DD" value="<?php echo isset($worker) ? $worker->getBirthDay() : ""; ?>" class="form-control" name="birthday"></div>
+				<div class="col-md-9"><input type="date" placeholder="YYYY-MM-DD" value="<?php echo isset($worker) ? $worker->getBirthDay() : ""; ?>" class="form-control" name="birthday"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">Kinh nghiệm</div>

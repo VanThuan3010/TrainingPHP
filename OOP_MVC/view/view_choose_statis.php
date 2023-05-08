@@ -23,8 +23,8 @@
 					</select>
 				</div>
 			</div>
-			<!-- <div class="row">
-				<div class="col-md-4">Lọc theo số giờ làm</div>
+			<div class="row">
+				<div class="col-md-4">Lọc theo hệ số lương</div>
 				<div class="col-md-8">
 					<div class="wrapper">
 						<div class="values">
@@ -33,15 +33,15 @@
 							</span>
 							<span> &dash; </span>
 							<span id="range2">
-								100
+								500000
 							</span>
 						</div>
-							<div class="slider-track"></div>
-							<input type="range" min="0" max="100" value="30" id="slider-1" oninput="slideOne()">
-							<input type="range" min="0" max="100" value="70" id="slider-2" oninput="slideTwo()">
+						<div class="slider-track"></div>
+						<input type="range" name="min" min="0" max="1000000" value="0" id="slider-1" oninput="slideOne()">
+						<input type="range" name="max" min="1" max="1000000" value="500000" id="slider-2" oninput="slideTwo()">
 					</div>
 				</div>
-			</div> -->
+			</div>
 			<div class="row">
 				<div class="col-md-4"></div>
 				<div class="col-md-8"><input name="statis" type="submit" class="btn btn-primary" value="thống kê"></div>
@@ -60,7 +60,7 @@
 	let sliderTwo = document.getElementById("slider-2");
 	let displayValOne = document.getElementById("range1");
 	let displayValTwo = document.getElementById("range2");
-	let minGap = 0;
+	let minGap = 1;
 	let sliderTrack = document.querySelector(".slider-track");
 	let sliderMaxValue = document.getElementById("slider-1").max;
 

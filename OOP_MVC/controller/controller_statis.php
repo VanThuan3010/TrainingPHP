@@ -1,8 +1,5 @@
 <?php
 
-/**
- * 
- */
 class controller_statis extends controller
 {
 	public function __construct()
@@ -23,11 +20,6 @@ class controller_statis extends controller
 		// 	$sort = $_POST["sort"];
 		// }
 		if(isset($_POST["statis"])) {
-			$record_per_page = 3;
-			$page = isset($_GET["page"]) ? $_GET["page"] : "1";
-			$total_record = $this->model->count("select id_worker from worker");
-			$from = ($page - 1) * $record_per_page;
-			$number_page = ceil($total_record / $record_per_page);
 
 			$arr_worker = array();
 			$month = $_POST["month"];
@@ -35,15 +27,24 @@ class controller_statis extends controller
 				$month = 0;
 			}
 
+			$min = $_POST['min'];
+			$max = $_POST['max'];
+
+
 			$year = $_POST["year"];
 			if ($year  == '') {
 				$year = 0;
 			}
+			$record_per_page = 3;
+			$page = isset($_GET["page"]) ? $_GET["page"] : "1";
+			$total_record = $this->model->count("select id_worker from worker where base_salary BETWEEN $min AND $max");
+			$from = ($page - 1) * $record_per_page;
+			$number_page = ceil($total_record / $record_per_page);
 
 			$sort = $_POST["sort"];
 			if ($_POST['sort'] == 2) {
-				$list_worker = $this->model->fetch("select * from worker ORDER BY worker.date_of_birth DESC LIMIT $from, $record_per_page");
-			} else $list_worker = $this->model->fetch("select * from worker ORDER BY worker.name_worker DESC LIMIT $from, $record_per_page");
+				$list_worker = $this->model->fetch("select * from worker where base_salary BETWEEN $min AND $max ORDER BY worker.date_of_birth DESC LIMIT $from, $record_per_page");
+			} else $list_worker = $this->model->fetch("select * from worker where base_salary BETWEEN $min AND $max ORDER BY worker.name_worker DESC LIMIT $from, $record_per_page");
 
 			foreach ($list_worker as $workers) {
 				if ($workers->id_type_worker == 1) {
@@ -79,11 +80,6 @@ class controller_statis extends controller
 			}
 		}
 		if (isset($_GET["page"])) {
-			$record_per_page = 3;
-			$page = $_GET["page"];
-			$total_record = $this->model->count("select id_worker from worker");
-			$from = ($page - 1) * $record_per_page;
-			$number_page = ceil($total_record / $record_per_page);
 
 			$arr_worker = array();
 			$month = $_GET["month"];
@@ -95,10 +91,17 @@ class controller_statis extends controller
 			if ($year  == '') {
 				$year = 0;
 			}
+			$min = $_GET['min'];
+			$max = $_GET['max'];
 			$sort = $_GET["sort"];
+			$record_per_page = 3;
+			$page = isset($_GET["page"]) ? $_GET["page"] : "1";
+			$total_record = $this->model->count("select id_worker from worker where base_salary BETWEEN $min AND $max");
+			$from = ($page - 1) * $record_per_page;
+			$number_page = ceil($total_record / $record_per_page);
 			if ($_GET["sort"] == 2) {
-				$list_worker = $this->model->fetch("select * from worker ORDER BY worker.date_of_birth DESC LIMIT $from, $record_per_page");
-			} else $list_worker = $this->model->fetch("select * from worker ORDER BY worker.name_worker DESC LIMIT $from, $record_per_page");
+				$list_worker = $this->model->fetch("select * from worker where base_salary BETWEEN $min AND $max ORDER BY worker.date_of_birth DESC LIMIT $from, $record_per_page");
+			} else $list_worker = $this->model->fetch("select * from worker where base_salary BETWEEN $min AND $max ORDER BY worker.name_worker DESC LIMIT $from, $record_per_page");
 
 			foreach ($list_worker as $workers) {
 				if ($workers->id_type_worker == 1) {
