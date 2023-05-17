@@ -6,7 +6,7 @@
         </tab>
         <section id="helloworld" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>Hello World</label>
+            <label>Layout</label>
             <tab>htcmage</tab>
             <resource>HTCMage_HelloWorld::helloworld_config</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
@@ -18,6 +18,13 @@
                 <field id="display_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Display Text</label>
                     <comment>This text will display on the frontend.</comment>
+                </field>
+            </group>
+            <group id="numberresult" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Number Result</label>
+                <field id="list_mode" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of Result will Show</label>        
+                    <source_model>HTCMage\HelloWorld\Model\Config\Source\ListMode</source_model>
                 </field>
             </group>
         </section>

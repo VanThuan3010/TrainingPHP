@@ -1,5 +1,20 @@
+<<style>
+    ul{
+        list-style-type: none;
+    }
+</style>
+<h1>
+    <?php
+    echo $block->getEnableTitle();
+    ?>
+</h1>
+<h3>FAQ</h3>
+<input type="text" placeholder="Search FAQ"></input>
+<ul>
 <?php 
-echo "test1";
-// echo $block->getGeneralConfig();
-
-?>
+    $a =  $block-> getNumRes();
+    $result = array('How do i find my order','How does buying work','How many fees are there','How do i sign out','How do i refult item',);
+    for ($i = 0;$i < $a;$i++){?>
+        <li><?php echo $result[$i] ?></li>
+    <?php } ?>
+</ul>
