@@ -1,26 +1,27 @@
 <div class="panel panel-primary">
-	<div class="panel-heading">Bảng thêm sửa nhân viên</div>
+	<div class="panel-heading">Bảng <?php if ($act == 'edit') echo 'sửa thông tin';
+									else echo 'thêm mới' ?> nhân viên</div>
 	<div class="panel-body">
 		<form method="post" action="<?php echo $form_action ?>">
 			<div class="row">
 				<div class="col-md-3">Tên nhân viên</div>
-				<div class="col-md-9"><input type="text" class="form-control" value="<?php echo isset($worker) ? $worker->getName() : ""; ?>" name="name_worker"></div>
+				<div class="col-md-9"><input type="text" required class="form-control" value="<?php echo isset($worker) ? $worker->getName() : ""; ?>" name="name_worker"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">Ngày sinh</div>
-				<div class="col-md-9"><input type="date" placeholder="YYYY-MM-DD" value="<?php echo isset($worker) ? $worker->getBirthDay() : ""; ?>" class="form-control" name="birthday"></div>
+				<div class="col-md-9"><input type="date" required placeholder="YYYY-MM-DD" value="<?php echo isset($worker) ? $worker->getBirthDay() : ""; ?>" class="form-control" name="birthday"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">Kinh nghiệm</div>
-				<div class="col-md-9"><input type="text" class="form-control" value="<?php echo isset($worker) ? $worker->getYearExp() : ""; ?>" name="number_year_exp"></div>
+				<div class="col-md-9"><input type="text" required class="form-control" value="<?php echo isset($worker) ? $worker->getYearExp() : ""; ?>" name="number_year_exp"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">Địa chỉ</div>
-				<div class="col-md-9"><input type="text" class="form-control" value="<?php echo isset($worker) ? $worker->getAddress() : ""; ?>" name="address"></div>
+				<div class="col-md-9"><input type="text" required class="form-control" value="<?php echo isset($worker) ? $worker->getAddress() : ""; ?>" name="address"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">Tuổi</div>
-				<div class="col-md-9"><input type="number" class="form-control" value="<?php echo isset($worker) ? $worker->getAge() : ""; ?>" name="age_worker"></div>
+				<div class="col-md-9"><input type="number" required class="form-control" value="<?php echo isset($worker) ? $worker->getAge() : ""; ?>" name="age_worker"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">Loại nhân viên</div>
@@ -37,7 +38,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3">Lương cơ bản</div>
-				<div class="col-md-9"><input type="text" class="form-control" value="<?php echo isset($worker) ? $worker->getBasicPay() : ""; ?>" name="base_salary"></div>
+				<div class="col-md-9"><input type="text" required class="form-control" value="<?php echo isset($worker) ? $worker->getBasicPay() : ""; ?>" name="base_salary"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3"></div>
