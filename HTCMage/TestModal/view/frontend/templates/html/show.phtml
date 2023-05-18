@@ -1,0 +1,32 @@
+<?php $collection = $block->getCollection(); ?>
+
+<?php if (count($collection)) { ?>
+<table border="1">
+    <thead>
+        <td>ID</td>
+        <td>Name</td>
+        <td></td>
+    </thead>
+    <tbody>
+      <?php foreach($collection as $post){ ?>
+        <tr>
+           <td><?php echo $post->getId(); ?></td> 
+           <td><?php echo $post->getName(); ?></td>
+           <td><a href="<?= $block->getEditPageUrl()?>">Edit </a><a href="<?= $block->getDeleteUrl()?>">Delete</a></td>
+        </tr>
+     <?php } ?>
+    </tbody>
+</table>
+<?php } else { ?>
+    <h1 style="color: red">No Data founded</h1>
+<?php } ?>
+<hr />
+<form method="post" action="<?= $block->getPostUrl() ?>">
+    <fieldset style="margin: 0 auto; width: 50%">
+        <div>
+            <label for="name"><?= __("Name") ?></label>
+            <input type="text" name="name"/>
+        </div> <br/>
+        <input type="submit" value="Add/Update" />
+    </fieldset>
+</form>
