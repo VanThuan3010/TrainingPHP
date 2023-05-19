@@ -1,0 +1,15 @@
+<?php 
+    $id = $this->getRequest()->getParams('id');
+    $result = $block->getEditInfor($id);
+    foreach ($result as $item){
+?>
+<form method="post" action="<?= $block->getUrl('testmodal/thuan/doedit', ['id' => ($item->getId())]) ?>">
+    <fieldset style="margin: 0 auto; width: 50%">
+        <div>
+            <label for="name"><?= __("Name") ?></label>
+            <input type="text" name="name" value="<?php echo $item->getName() ?>" >
+        </div> <br/>
+        <input type="submit" value="Update"/>
+    </fieldset>
+</form>
+<?php } ?>

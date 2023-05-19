@@ -4,6 +4,6 @@
             <referenceContainer name="div.sidebar.additional" remove="true"/>
     </referenceContainer>
     <referenceContainer name="content">
-        <block class="HTCMage\TestModal\Block\Test" name='show' template="HTCMage_TestModal::html/show.phtml"/>
+        <block class="HTCMage\TestModal\Block\Test" name='edit' template="HTCMage_TestModal::html/edit.phtml"/>
     </referenceContainer>
 </page>

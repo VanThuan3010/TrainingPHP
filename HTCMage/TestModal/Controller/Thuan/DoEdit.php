@@ -6,7 +6,7 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use HTCMage\TestModal\Model\Thuan;
 
-class Edit extends Action
+class DoEdit extends Action
 {
     protected $myModelResource;
 
@@ -22,6 +22,13 @@ class Edit extends Action
 
     public function execute()
     {
-        return $this->PageFactory->create();
+        $update = $this->getRequest()->getParams();
+        $this->myModelResource->load($update['id']);
+        $this->myModelResource->setData('name',$update['name']);
+        $this->myModelResource->save();
+        
+        $redirect = $this->resultRedirectFactory->create();
+        $redirect->setPath('testmodal/test/add');
+        return $redirect;
     }
 }

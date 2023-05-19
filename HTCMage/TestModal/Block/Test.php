@@ -24,18 +24,24 @@ class Test extends \Magento\Framework\View\Element\Template
         return $viewCollection->getItems();
     }
 
+    public function getEditInfor($id){
+        $viewCollection = $this->_viewCollectionFactory ->create();
+        $viewCollection->addFieldToSelect('*')->addFieldToFilter('id',$id);
+        return $viewCollection->getItems();
+    }
+
      public function getPostUrl()
     {
         return $this->getUrl('testmodal/thuan/save');
     }
 
-    public function getEditPageUrl()
+    public function getEditUrl()
     {
         return $this->getUrl('testmodal/thuan/edit');
     }
 
-    public function getDeleteUrl()
+    public function getDoEditUrl()
     {
-        return $this->getUrl('testmodal/thuan/delete');
+        return $this->getUrl('testmodal/thuan/doedit');
     }
 }

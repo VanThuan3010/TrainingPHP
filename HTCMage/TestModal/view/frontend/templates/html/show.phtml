@@ -12,7 +12,7 @@
         <tr>
            <td><?php echo $post->getId(); ?></td> 
            <td><?php echo $post->getName(); ?></td>
-           <td><a href="<?= $block->getEditPageUrl()?>">Edit </a><a href="<?= $block->getDeleteUrl()?>">Delete</a></td>
+           <td><a href="<?= $block->getUrl('testmodal/thuan/edit', ['id' => ($post->getId())])?>">Edit </a><a href="<?= $block->getUrl('testmodal/thuan/delete', ['id' => ($post->getId())])?>">Delete</a></td>
         </tr>
      <?php } ?>
     </tbody>
@@ -25,8 +25,8 @@
     <fieldset style="margin: 0 auto; width: 50%">
         <div>
             <label for="name"><?= __("Name") ?></label>
-            <input type="text" name="name"/>
+            <input type="text" name="name">
         </div> <br/>
-        <input type="submit" value="Add/Update" />
+        <input type="submit" value="Add" />
     </fieldset>
 </form>
