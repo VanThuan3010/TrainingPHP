@@ -1,0 +1,66 @@
+<script src ="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.js" type="text/javascript"></script>
+
+<p>
+    <select data-bind="options: nhanvien,
+                       optionsText: 'nvName',
+                       value: selectedNhanvien"></select>
+</p> <br><br>
+<div>
+    <span data-bind="text: selectedNhanvien().nvName "></span>, 
+    <span data-bind="text: selectedNhanvien().nvAge "></span> tuổi,
+    <span data-bind="text: selectedNhanvien().nvJob "></span>
+</div>
+<br><br>
+
+<button data-bind="click: changeState">Add User</button>
+<form data-bind="visible: showForm()">
+    <div>
+        <label for="name">Tên:</label>
+        <input type="text" name="name" data-bind="textInput: nameNV">
+    </div>
+    <div>
+        <label for="age">Tuổi:</label>
+        <input type="text" name="age" data-bind="textInput: ageNV">
+    </div>
+    <div>
+        <label for="job">Nghề nghiệp:</label>
+        <input type="text" name="job" data-bind="textInput: jobNV">
+    </div>
+    <button data-bind="click: add">ADD
+</form>
+
+<script type = "text/javascript">
+    var NhanVien = function(name, age, job) {
+        this.nvName = name;
+        this.nvAge = age;
+        this.nvJob = job;
+    };
+    var viewModel = {
+        nhanvien : ko.observableArray([
+            new NhanVien( "Hiệu Nguyễn","28", "Developer"),
+            new NhanVien("Cường Trần","27","Developer"),
+            new NhanVien("Thông Phùng","30","Developer")
+        ]),
+        selectedNhanvien : ko.observable(),
+        nameNV : ko.observable(),
+        ageNV : ko.observable(),
+        jobNV : ko.observable(),
+        state : ko.observable(false),
+        changeState: function(){
+            this.state(!this.state());
+            return this.state;
+        },
+        showForm: function(){
+            return this.state;
+        },
+        add: function(){
+            var name = "", age = "", job = "";
+            name = this.nameNV(); 
+            age = this.ageNV();
+            job = this.jobNV();
+            var newUser = new NhanVien(name,age,job);
+            this.nhanvien.push(newUser);
+        }
+    }
+    ko.applyBindings(viewModel);
+</script>

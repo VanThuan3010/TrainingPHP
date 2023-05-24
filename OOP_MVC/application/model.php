@@ -30,4 +30,4 @@
         $rows = mysqli_fetch_object($result);
         return $rows;
     }
-	}
+}
