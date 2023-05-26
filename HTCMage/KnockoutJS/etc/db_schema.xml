@@ -1,0 +1,12 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="nhan_vien">
+        <column xsi:type="smallint" name="id" unsigned="true" nullable="false" comment="Entity Id" identity="true"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="120" comment="Title"/>
+        <column xsi:type="smallint" name="age" comment="Age"/>
+        <column xsi:type="varchar" name="job" nullable="false" length="70" comment="job"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+   </table>
+</schema>

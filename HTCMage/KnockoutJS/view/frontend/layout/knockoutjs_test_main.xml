@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="div.sidebar.main">
+            <referenceContainer name="div.sidebar.additional" remove="true"/>
+    </referenceContainer>
+    <referenceContainer name="content">
+        <block class="HTCMage\KnockoutJS\Block\Test" name='show' template="HTCMage_KnockoutJS::html/show.phtml"/>
+    </referenceContainer>
+</page>

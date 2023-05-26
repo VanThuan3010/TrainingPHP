@@ -1,0 +1,66 @@
+<?php $list_nv = $block->getCollection(); ?>
+<div id = "bt">
+ <table class="my-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Job</th>
+            </tr>
+        </thead>
+
+        <tbody data-bind="foreach: listnv">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: age"></td>
+                <td data-bind="text: job"></td>
+            </tr>
+        </tbody>
+    </table>
+<select name="selectnhanvien" id="selectnhanvien" data-bind="options: listnv,click: deleteEm,
+                       optionsText: 'name',
+                       value: selectedNhanvien">
+
+</select><br><br>
+<div>
+    <span data-bind="text: selectedNhanvien().name "></span>,
+    <span data-bind="text: selectedNhanvien().age "></span> tuổi,
+    <span data-bind="text: selectedNhanvien().job "></span>
+</div>
+<br><br>
+<a data-bind="attr: { href: url }"><button>Delete</button></a>
+<form method="post" action="<?= $block->getPostUrl() ?>" data-bind="visible: state">
+    <div>
+        <label for="name">Tên:</label>
+        <input type="text" name="name">
+    </div>
+    <div>
+        <label for="age">Tuổi:</label>
+        <input type="number" name="age">
+    </div>
+    <div>
+        <label for="job">Nghề nghiệp:</label>
+        <input type="text" name="job">
+    </div>
+    <button type="submit">ADD</button>
+</form>
+
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'ko'], function($, ko) {
+        var employeesData = JSON.parse('<?php echo $list_nv ?>');
+        var viewModel = {
+            state : ko.observable(true),
+            selectedNhanvien : ko.observable(),
+            listnv: ko.observableArray(employeesData),
+            url: ko.observable('http://test.m2.com/index.php/knockoutjs/act/delete'),
+            deleteEm: function(){
+                var id = viewModel.selectedNhanvien().id;
+                var urlDel = 'http://test.m2.com/index.php/knockoutjs/act/delete/id/' + id;
+                viewModel.url(urlDel);
+            }
+        }
+        ko.applyBindings(viewModel,document.getElementById("bt"));
+    });
+</script>
