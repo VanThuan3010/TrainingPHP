@@ -1,0 +1,4 @@
+bài tập event:
+- tạo 1 config admin dạng text input (black list emails)
+- nhập được nhiều email trong field, các email ngăn cách nhau bởi dấu ","
+- dùng events validate không cho customer login hoặc register khi email ở trong black li

@@ -1,0 +1,18 @@
+Cho 1 list nhân viên: 
+1: Hieu Nguyen, 28 tuoi, nghe nghiep Developer
+2: Cuong Tran, 27 tuoi, nghe nghiep Developer
+3: Thong Phung, 30 tuoi, nghe nghiep Developer
+
+Yêu Cầu: Dùng KO JS để tạo 1 select box.
+Nếu select tới nhân viên nào thì ghi kết quả sang bên cạnh."
+
+"Tạo 1 button: Add User
+=> Khi click vào sẽ hiện ra 1 form để nhập Name, User, Job
+=> Khi click submit form sẽ add user vào select, khi select user mới thì hiện thông tin ra như phần trước
+
+Thêm nút Delete. 
+- Khi delete thì xóa nhân viên hiện tại ở select.
+kết hợp php vs Mysql vào bài trên. Tạo 1 bảng nhan_vien để thêm các nhân viên này vào bảng. Frontend sử dụng KO JS 
+để render ra list nhân viên.
+Khi add user thì ngoài việc hiển thị frontend phải lưu đúng vào bảng. Nếu reload thì ko bị mất đi.  
+Khi delete user thì xóa ở frontend và phải xóa cả ở trong bảng
