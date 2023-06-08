@@ -15,12 +15,6 @@ class Related extends RelatedParent {
         }
         return $result;
     }
-    /**
-     * Get price modifier
-     *
-     * @return \Magento\Catalog\Ui\Component\Listing\Columns\Price
-     * @deprecated 101.0.0
-     */
     private function getPriceModifier($modify) {
         if (!$this->priceModifier) {
             $this->priceModifier = \Magento\Framework\App\ObjectManager::getInstance()->get(
@@ -29,12 +23,6 @@ class Related extends RelatedParent {
         }
         return $this->priceModifier;
     }
-    /**
-     * Prepares config for the Related products fieldset
-     *
-     * @return array
-     * @since 101.0.0
-     */
     protected function getCustomlinkedFieldset($modify) {
         $content = __(
                 'List suggest for this Product'
@@ -72,9 +60,6 @@ class Related extends RelatedParent {
             return $data;
         }
         $priceModifier = $this->getPriceModifier($modify);
-        /**
-         * Set field name for modifier
-         */
         $priceModifier->setData('name', 'price');
         $dataScopes = $this->getDataScopes();
         $dataScopes[] = static::DATA_SCOPE_CUSTOMLINKED;
@@ -85,8 +70,6 @@ class Related extends RelatedParent {
                 if ($linkItem->getLinkType() !== $dataScope) {
                     continue;
                 }
-
-                /** @var \Magento\Catalog\Model\Product $linkedProduct */
                 $linkedProduct = $modify->productRepository->get(
                     $linkItem->getLinkedProductSku(),
                     false,

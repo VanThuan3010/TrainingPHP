@@ -1,0 +1,66 @@
+<?php /** @var $block \Magento\Framework\View\Element\Template */ ?>
+<div style="display: none" id="popup-mpdal">
+    <div id="minicart-content-wrapper" >
+        <?php
+            $om =   \Magento\Framework\App\ObjectManager::getInstance();
+            $cartData = $om->create('Magento\Checkout\Model\Cart')->getQuote()->getAllVisibleItems();
+            $cartDataCount = count( $cartData );
+        ?>
+        <?php if( $cartDataCount > 0 ): ?>
+            <h3>You may like this!</h3>
+            <div class="cartProductList" id="cartProductList" style="display: flex, width: 1000px" >
+                <?php foreach( $cartData as $item ): ?>
+                    <?php
+                    if($block->getProductsData($item->getProductId())){
+                        $suggestProductId = $block->getProductsData($item->getProductId());}
+                    else  $suggestProductId = '';
+                    if ($suggestProductId != ''){
+                        $suggestProduct = $om->create('Magento\Catalog\Model\Product')->load($suggestProductId);
+                        $listBlock = $om->get('\Magento\Catalog\Block\Product\ListProduct');
+                        $addToCartUrl =  $listBlock->getAddToCartUrl($suggestProduct);
+                        $image = $suggestProduct->getSmallImage() == '' ? '/pub/static/frontend/Clear/usb2u/en_GB/images/default-category-image_1.png' : '/pub/media/catalog/product' . $suggestProduct->getSmallImage();                        ?>
+                    <div style = "width: 300px">
+                        <img src="<?php echo $image; ?>">
+                        <p>
+                            <span class="price">As low as $<?php echo $suggestProduct->getPrice(); ?></span> <br>
+                            <span class="name"><?php echo $suggestProduct->getName(); ?></span>
+                        </p>
+                        <form data-role="tocart-form" action="<?php echo $addToCartUrl; ?>" method="post"> 
+                            <?php echo $block->getBlockHtml('formkey')?>
+                            <div class="btn">
+                                <button type="submit" title="Add to Cart" class="action tocart primary">
+                                    <span>Add to Cart</span>
+                                </button>
+                            </div>   
+                        </form>
+                    </div>
+                    <?php } $suggestProductId = ''; ?>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="emptyList">No products in your Cart.</div>
+        <?php endif; ?>
+    </div>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true
+            };
+                $('#popup-mpdal').show();
+                var popup = modal(options, $('#popup-mpdal'));
+                $("#popup-mpdal").modal("openModal");
+        }
+        
+    );
+</script>
